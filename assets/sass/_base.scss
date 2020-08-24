@@ -1,0 +1,77 @@
+//Custom CSS Variables
+// They work only within the scope of the declaration block. So we define it in the root, so that all of the elemts will be able to access it. They are a bit better than sass variables, since they can be used in  calc(), can be changed from dev tools, they don't need a preprocessor,can be manipulated in js
+//To use it: var(variable name)
+:root {
+    --color-primary: #eb2f64;
+    --color-primary-light: #FF3366;
+    --color-primary-dark: #BA265D;
+
+    --color-white: #fff;
+    --color-black: #000;
+
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+
+    // --shadow-dark: 0 2rem 6rem rgba(var(--color-black), 1); --This doesn't work
+    --shadow-dark: 0 2rem 6rem rgba(0,0,0, .3);
+    --shadow-light: 0 2rem 5rem rgba(0,0,0, .06);
+
+    --border-line: 1px solid var(--color-grey-light-2);
+}
+
+// SASS Variables for Media Queries - Wherever the code breaks we are fixing 
+$bp-largest: 75em;       //1200px
+$bp-large: 68.75em;      //1100px
+$bp-medium: 56.25em;     //900px
+$bp-small: 37.5em;       //600px
+$bp-smallest: 31.25em;   //500px
+$bp-mobile: 28.125em;    //450px
+$bp-mobile-320: 20em;    //450px
+$bp-ipad-pro: 64em;      //1024px 
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* Inherit from body element and applies it to all elements */
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+
+    @media only screen and (max-width: $bp-large) {
+        font-size: 50%; // 1rem= 8px -> 8/16=0.5 -> 50%
+    }
+
+    @media only screen and (max-width: $bp-mobile) {
+        font-size: 43.75%; // 1rem= 7px -> 7/16=0.4375 -> 50%
+    }
+}
+
+body {
+    color: var(--color-grey-dark-2);
+    background-image: linear-gradient(to right bottom, 
+                                      var(--color-primary-light),
+                                      var(--color-primary-dark));
+    background-size: cover; 
+    background-repeat: no-repeat;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+
+    @media only screen and (device-width: $bp-ipad-pro) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
